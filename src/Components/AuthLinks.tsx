@@ -7,7 +7,7 @@ const AuthLinks = () => {
         <>
             {session === "" ? (
                 <Link
-                    className="text-white font-semibold bg-red-600 hover:bg-red-700 px-4 py-1.5 transition-all duration-500 ease-in-out relative"
+                    className="text-white rounded-full font-semibold bg-red-600 hover:bg-red-700 px-4 py-1.5 transition-all duration-500 ease-in-out relative"
                     to="/auth/login"
                 >
                     Login/Signup
@@ -15,7 +15,7 @@ const AuthLinks = () => {
             ) : (
                 <button
                     onClick={() => logout()}
-                    className="text-white bg-red-600 hover:bg-red-700 px-4 py-1.5 rounded-lg font-semibold  transition-all duration-500 ease-in-out relative"
+                    className="text-white bg-red-600 hover:bg-red-700 px-4 py-1.5 rounded-full font-semibold  transition-all duration-500 ease-in-out relative"
                 >
                     Logout
                 </button>

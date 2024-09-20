@@ -1,12 +1,14 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { SignUpData } from "../Types";
-import { LoginData } from "../Types/index.ts";
-type AuthFormProps = {
+import { LoginData, SignUpData } from "../Types";
+type AuthFormProps<T> = {
     isLogin: boolean;
-    onSubmit: ({}: SignUpData | LoginData) => void;
+    onSubmit: (data: T) => Promise<void>;
 };
 
-const AuthForm = ({ isLogin, onSubmit }: AuthFormProps) => {
+const AuthForm = <T extends SignUpData | LoginData>({
+    isLogin,
+    onSubmit,
+}: AuthFormProps<T>) => {
     const [formData, setFormData] = useState<SignUpData>({
         name: "",
         email: "",
@@ -21,7 +23,7 @@ const AuthForm = ({ isLogin, onSubmit }: AuthFormProps) => {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        onSubmit(formData);
+        onSubmit(formData as T);
     };
 
     return (

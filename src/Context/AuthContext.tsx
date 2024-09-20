@@ -10,7 +10,7 @@ type AuthProviderProps = {
 type AuthContextType = {
     session: string;
     setSession: React.Dispatch<React.SetStateAction<string>>;
-    loading: boolean;
+    // loading: boolean;
     logout: () => void;
     register: (data: RegisterData) => Promise<void>;
     login: (data: LoginData) => Promise<void>;
@@ -18,7 +18,7 @@ type AuthContextType = {
 const defaultContextValue: AuthContextType = {
     session: localStorage.getItem("session") || "",
     setSession: () => {},
-    loading: true,
+    //loading: true,
     logout: () => {},
     register: async () => {},
     login: async () => {},
@@ -29,7 +29,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     const [session, setSession] = useState<string>(
         localStorage.getItem("session") || ""
     );
-    const [loading, setLoading] = useState<boolean>(true);
+    //const [loading, setLoading] = useState<boolean>(true);
     const navigate = useNavigate();
 
     const register = async (data: RegisterData): Promise<void> => {
@@ -37,6 +37,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         const userExists = await checkIfUserExists(email);
         if (userExists) {
             toast.error("Este correo ya está registrado.", {
+                theme: "dark",
                 autoClose: 1500,
             });
             return;
@@ -51,6 +52,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
             request.onsuccess = function () {
                 toast.success("Usuario registrado con éxito.", {
+                    theme: "dark",
                     autoClose: 1500,
                 });
                 resolve();
@@ -58,6 +60,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
             request.onerror = function () {
                 toast.error("Error al registrar el usuario.", {
+                    theme: "dark",
                     autoClose: 1500,
                 });
                 reject();
@@ -72,6 +75,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
             const loginSuccessful = await loginUser(email, password);
             if (loginSuccessful) {
                 toast.success("Acceso permitido.", {
+                    theme: "dark",
                     autoClose: 1500,
                 });
                 setSession(loginSuccessful);
@@ -79,6 +83,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
                 navigate("/");
             } else {
                 toast.error("Acceso denegado.", {
+                    theme: "dark",
                     autoClose: 1500,
                 });
             }
@@ -97,7 +102,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
             value={{
                 session,
                 setSession,
-                loading,
+                //  loading,
                 logout,
                 register,
                 login,

@@ -5,7 +5,7 @@ import { LoginData } from "../Types/index.ts";
 import { toast } from "react-toastify";
 const Login = () => {
     const { login } = useAuth();
-    const handleLogin = (data: LoginData) => {
+    const handleLogin = async (data: LoginData): Promise<void> => {
         const { email, password } = data;
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!email || !emailRegex.test(email)) {
