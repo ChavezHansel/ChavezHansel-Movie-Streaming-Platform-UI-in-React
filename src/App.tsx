@@ -24,13 +24,11 @@ function App() {
             <Route
                 path="/"
                 element={
-                    <>
-                        <AuthProvider>
-                            <MoviesProvider>
-                                <Outlet />
-                            </MoviesProvider>
-                        </AuthProvider>
-                    </>
+                    <AuthProvider>
+                        <MoviesProvider>
+                            <Outlet />
+                        </MoviesProvider>
+                    </AuthProvider>
                 }
             >
                 <Route element={<MainLayout />}>
