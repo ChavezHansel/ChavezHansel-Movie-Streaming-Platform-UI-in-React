@@ -18,7 +18,7 @@ const NavLinks = ({ links }: NavLinkProps) => {
                     >
                         {link.name}
                         {location.pathname === link.path && (
-                            <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 translate-y-1.5 w-2 h-2 bg-red-600 rounded-full"></span>
+                            <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 translate-y-1.5 w-2 h-2 bg-red-full rounded-full"></span>
                         )}
                     </Link>
                 </li>

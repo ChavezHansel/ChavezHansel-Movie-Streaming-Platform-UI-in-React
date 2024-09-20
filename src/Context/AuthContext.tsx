@@ -1,7 +1,7 @@
 import { useState, createContext, ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 import { LoginData, RegisterData } from "../Types";
-import { checkIfUserExists, loginUser, openDatabase } from "../Data/DB";
+import { checkIfUserExists, loginUser, openDatabase } from "../data/DB";
 import { toast } from "react-toastify";
 
 type AuthProviderProps = {
@@ -47,7 +47,6 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
             const transaction = db.transaction("users", "readwrite");
             const store = transaction.objectStore("users");
             const user = { name, email, password };
-
             const request = store.add(user);
 
             request.onsuccess = function () {

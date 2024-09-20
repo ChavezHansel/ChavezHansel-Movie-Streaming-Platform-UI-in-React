@@ -6,17 +6,18 @@ import {
     createRoutesFromElements,
     Outlet,
 } from "react-router-dom";
-import Home from "./Pages/Home";
-import MainLayout from "./Layout/MainLayout";
-import Genre from "./Pages/Genre";
-import Country from "./Pages/Country";
-import Movies from "./Pages/Movies";
-import Series from "./Pages/Series";
-import Animation from "./Pages/Animation";
-import Login from "./Pages/Login";
-import SignUp from "./Pages/SignUp";
-import AuthLayout from "./Layout/AuthLayout";
-import { AuthProvider } from "./Context/AuthContext";
+import Home from "./pages/Home";
+import MainLayout from "./layout/MainLayout";
+import Genre from "./pages/Genre";
+import Country from "./pages/Country";
+import Movies from "./pages/Movies";
+import Series from "./pages/Series";
+import Animation from "./pages/Animation";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
+import AuthLayout from "./layout/AuthLayout";
+import { AuthProvider } from "./context/AuthContext";
+import { MoviesProvider } from "./context/MoviesContext";
 
 function App() {
     const router = createBrowserRouter(
@@ -26,7 +27,9 @@ function App() {
                 element={
                     <>
                         <AuthProvider>
-                            <Outlet />
+                            <MoviesProvider>
+                                <Outlet />
+                            </MoviesProvider>
                         </AuthProvider>
                     </>
                 }

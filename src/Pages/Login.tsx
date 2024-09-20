@@ -1,6 +1,6 @@
 import AuthForm from "../Components/AuthForm.tsx";
 import { Link } from "react-router-dom";
-import useAuth from "../Hooks/useAuth.tsx";
+import useAuth from "../hooks/useAuth.tsx";
 import { LoginData } from "../Types/index.ts";
 import { toast } from "react-toastify";
 const Login = () => {

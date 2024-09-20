@@ -1,6 +1,6 @@
 import SearchBar from "./SearchBar";
 import NavLinks from "./NavLinks";
-import { navLinks } from "../Data/data.ts";
+import { navLinks } from "../data/data.ts";
 import AuthLinks from "./AuthLinks.tsx";
 
 const NavBar = () => {
