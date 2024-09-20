@@ -55,6 +55,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
                     theme: "dark",
                     autoClose: 1500,
                 });
+                navigate("/auth/login");
                 resolve();
             };
 
