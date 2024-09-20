@@ -3,7 +3,7 @@ import { RxTimer } from "react-icons/rx";
 import { IoMdStar } from "react-icons/io";
 import { formatVoteAverage } from "../utils/index.ts";
 import GenreTag from "./GenreTag.tsx";
-import { Movie } from "../Types/index.ts";
+import { Movie } from "../types/index.ts";
 
 type CarouselDetailsProps = {
     movie: Movie;

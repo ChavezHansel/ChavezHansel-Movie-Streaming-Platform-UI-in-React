@@ -1,5 +1,5 @@
 import useMovies from "../hooks/useMovies.tsx";
-import { Movie } from "../Types/index.ts";
+import { Movie } from "../types/index.ts";
 import CarouselActions from "./CarouselActions.tsx";
 import CarouselDetails from "./CarouselDetails.tsx";
 
