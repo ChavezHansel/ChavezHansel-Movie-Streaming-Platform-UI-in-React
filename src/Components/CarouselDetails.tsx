@@ -1,7 +1,7 @@
 import { LiaCalendar } from "react-icons/lia";
 import { RxTimer } from "react-icons/rx";
 import { IoMdStar } from "react-icons/io";
-import { formatVoteAverage } from "../UtilPages/index.ts";
+import { formatVoteAverage } from "../util/index.ts";
 import GenreTag from "./GenreTag.tsx";
 import { Movie } from "../types/index.ts";
 
