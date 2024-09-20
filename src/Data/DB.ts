@@ -41,28 +41,27 @@ export const checkIfUserExists = async (email: string): Promise<boolean> => {
       };
     });
   };
-  export const loginUser = async (email: string, password: string) => {
-    const db = await openDatabase();
-  
-    return new Promise<string>((resolve, reject) => {
-      const transaction = db.transaction("users", "readonly");
-      const store = transaction.objectStore("users");
-  
-      const request = store.get(email);
-  
-      request.onsuccess = function () {
-        const user = request.result;
-        if (user && user.password === password) {
-          console.log("Login exitoso");
-          resolve(email); 
-        } else {
-          console.error("Email o contraseña incorrectos.");
-          resolve(email); 
-        }
-      };
-  
-      request.onerror = function () {
-        reject("Error al verificar las credenciales.");
-      };
-    });
-  };
+    export const loginUser = async (email: string, password: string) => {
+        const db = await openDatabase();
+    
+        return new Promise<string>((resolve, reject) => {
+        const transaction = db.transaction("users", "readonly");
+        const store = transaction.objectStore("users");
+    
+        const request = store.get(email);
+    
+        request.onsuccess = function () {
+            const user = request.result;
+            if (user && user.password === password) {
+            console.log("Login exitoso");
+            resolve(email); 
+            } else {
+            resolve("");
+            }
+        };
+    
+        request.onerror = function () {
+            reject("Error al verificar las credenciales.");
+        };
+        });
+    };

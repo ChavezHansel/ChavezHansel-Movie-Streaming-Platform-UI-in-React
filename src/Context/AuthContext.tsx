@@ -78,11 +78,12 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
                     theme: "dark",
                     autoClose: 1500,
                 });
+                console.log(loginSuccessful);
                 setSession(loginSuccessful);
                 localStorage.setItem("session", loginSuccessful);
                 navigate("/");
             } else {
-                toast.error("Acceso denegado.", {
+                toast.error("Email o contraseña incorrectos.", {
                     theme: "dark",
                     autoClose: 1500,
                 });
