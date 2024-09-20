@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import AuthForm from "../Components2/AuthForm.tsx";
-import useAuth from "../Hookses/useAuth.tsx";
+import AuthForm from "../components/AuthForm.tsx";
+import useAuth from "../hooks/useAuth.tsx";
 import { toast } from "react-toastify";
-import { SignUpData } from "../Types2/index.ts";
+import { SignUpData } from "../types/index.ts";
 const Signup = () => {
     const { register } = useAuth();
     const handleSignup = async (data: SignUpData) => {

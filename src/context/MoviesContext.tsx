@@ -1,5 +1,5 @@
 import { useState, createContext, ReactNode, useEffect } from "react";
-import { Movie, Genre } from "../Types2/index.ts";
+import { Movie, Genre } from "../types/index.ts";
 import clienteAxios from "../config/clienteAxios.ts";
 import { formatRuntime } from "../util/index.ts";
 

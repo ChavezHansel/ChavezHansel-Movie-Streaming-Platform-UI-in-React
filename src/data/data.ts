@@ -1,4 +1,4 @@
-import { NavLink } from "../Types2/index.ts";
+import { NavLink } from "../types/index.ts";
 
 export const navLinks : NavLink[] = [
     { name: "Home", path: "/" },

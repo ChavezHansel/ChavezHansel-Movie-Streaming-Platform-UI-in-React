@@ -1,5 +1,5 @@
 import { TiMediaPlay } from "react-icons/ti";
-import { Movie } from "../Types2/index.ts";
+import { Movie } from "../types/index.ts";
 import WatchButton from "./WatchButton.tsx";
 import { MdOutlineAccessTimeFilled } from "react-icons/md";
 

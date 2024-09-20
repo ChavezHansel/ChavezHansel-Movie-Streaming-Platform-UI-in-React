@@ -5,8 +5,8 @@ import {
     createRoutesFromElements,
     Outlet,
 } from "react-router-dom";
-import { AuthProvider } from "./Contexx/AuthContext";
-import { MoviesProvider } from "./Contexx/MoviesContext";
+import { AuthProvider } from "./context/AuthContext";
+import { MoviesProvider } from "./context/MoviesContext";
 import MainLayout from "./LayoutTEmp/MainLayout";
 import Home from "./PagesTemp/Home";
 import Genre from "./PagesTemp/Genre";
