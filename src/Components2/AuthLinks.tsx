@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import useAuth from "../hooks/useAuth.tsx";
+import useAuth from "../Hookses/useAuth.tsx";
 
 const AuthLinks = () => {
     const { session, logout } = useAuth();

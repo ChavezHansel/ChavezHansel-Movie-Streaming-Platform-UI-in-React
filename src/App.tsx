@@ -5,18 +5,18 @@ import {
     createRoutesFromElements,
     Outlet,
 } from "react-router-dom";
-import { AuthProvider } from "./context/AuthContext";
-import { MoviesProvider } from "./context/MoviesContext";
-import MainLayout from "./layout/MainLayout";
-import Home from "./pages/Home";
-import Genre from "./pages/Genre";
-import Country from "./pages/Country";
-import Movies from "./pages/Movies";
-import Series from "./pages/Series";
-import Signup from "./pages/SignUp";
-import AuthLayout from "./layout/AuthLayout";
-import Animation from "./pages/Animation";
-import Login from "./pages/Login";
+import { AuthProvider } from "./Contexx/AuthContext";
+import { MoviesProvider } from "./Contexx/MoviesContext";
+import MainLayout from "./LayoutTEmp/MainLayout";
+import Home from "./PagesTemp/Home";
+import Genre from "./PagesTemp/Genre";
+import Country from "./PagesTemp/Country";
+import Movies from "./PagesTemp/Movies";
+import Series from "./PagesTemp/Series";
+import Signup from "./PagesTemp/SignUp";
+import AuthLayout from "./LayoutTEmp/AuthLayout";
+import Animation from "./PagesTemp/Animation";
+import Login from "./PagesTemp/Login";
 
 function App() {
     const router = createBrowserRouter(

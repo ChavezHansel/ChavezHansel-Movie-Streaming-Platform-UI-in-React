@@ -1,4 +1,4 @@
-import Carousel from "../components/Carousel.tsx";
+import Carousel from "../Components2/Carousel.tsx";
 
 const Home = () => {
     return (
