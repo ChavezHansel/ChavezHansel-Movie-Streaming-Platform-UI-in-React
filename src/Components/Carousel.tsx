@@ -11,11 +11,13 @@ const Carousel = () => {
     const { movies } = useMovies();
     const pagination = {
         clickable: true,
-        renderBullet: function (index: number, className: string): string {
+        renderBullet: (index: number, className: string): string => {
             return (
                 '<span class="' +
+                index +
+                " " +
                 className +
-                ' bg-red-700 text-3xl w-3 h-3 sm:w-5 sm:h-5 "></span>'
+                ' bg-red-700 text-3xl w-3 h-3 sm:w-5 sm:h-5"></span>'
             );
         },
     };
@@ -28,7 +30,7 @@ const Carousel = () => {
             className="mySwiper w-full min-w-full"
             slidesPerView={1}
             autoplay={{
-                delay: 3000, // 2 segundos de intervalo
+                delay: 3000,
                 disableOnInteraction: false,
             }}
             speed={1200}
