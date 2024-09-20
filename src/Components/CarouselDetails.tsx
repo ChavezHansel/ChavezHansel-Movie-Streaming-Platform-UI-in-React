@@ -1,9 +1,9 @@
 import { LiaCalendar } from "react-icons/lia";
 import { RxTimer } from "react-icons/rx";
 import { IoMdStar } from "react-icons/io";
-import { formatVoteAverage } from "../utils";
-import GenreTag from "./GenreTag";
-import { Movie } from "../Types";
+import { formatVoteAverage } from "../utils/index.ts";
+import GenreTag from "./GenreTag.tsx";
+import { Movie } from "../Types/index.ts";
 
 type CarouselDetailsProps = {
     movie: Movie;

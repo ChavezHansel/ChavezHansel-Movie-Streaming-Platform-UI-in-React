@@ -1,7 +1,7 @@
 import { useState, createContext, ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
-import { LoginData, RegisterData } from "../Types";
-import { checkIfUserExists, loginUser, openDatabase } from "../data/DB";
+import { LoginData, RegisterData } from "../Types/index.ts";
+import { checkIfUserExists, loginUser, openDatabase } from "../data/DB.ts";
 import { toast } from "react-toastify";
 
 type AuthProviderProps = {

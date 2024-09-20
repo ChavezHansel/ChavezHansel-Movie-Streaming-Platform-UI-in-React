@@ -1,7 +1,7 @@
 import { useState, createContext, ReactNode, useEffect } from "react";
-import { Movie, Genre } from "../Types";
-import clienteAxios from "../config/clienteAxios";
-import { formatRuntime } from "../utils";
+import { Movie, Genre } from "../Types/index.ts";
+import clienteAxios from "../config/clienteAxios.ts";
+import { formatRuntime } from "../utils/index.ts";
 
 type MoviesProviderProps = {
     children: ReactNode;

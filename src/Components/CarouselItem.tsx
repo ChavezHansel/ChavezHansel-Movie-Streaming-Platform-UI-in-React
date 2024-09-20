@@ -1,7 +1,7 @@
-import useMovies from "../hooks/useMovies";
-import { Movie } from "../Types";
-import CarouselActions from "./CarouselActions";
-import CarouselDetails from "./CarouselDetails";
+import useMovies from "../hooks/useMovies.tsx";
+import { Movie } from "../Types/index.ts";
+import CarouselActions from "./CarouselActions.tsx";
+import CarouselDetails from "./CarouselDetails.tsx";
 
 type CarouselItemProps = {
     movie: Movie;

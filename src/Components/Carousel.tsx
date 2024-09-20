@@ -1,12 +1,12 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-// Import Swiper styles
+
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import { Autoplay, Pagination } from "swiper/modules";
-import useMovies from "../hooks/useMovies";
-import CarouselItem from "./CarouselItem";
+import useMovies from "../hooks/useMovies.tsx";
+import CarouselItem from "./CarouselItem.tsx";
 const Carousel = () => {
     const { movies } = useMovies();
     const pagination = {

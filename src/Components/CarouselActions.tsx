@@ -1,6 +1,6 @@
 import { TiMediaPlay } from "react-icons/ti";
-import { Movie } from "../Types";
-import WatchButton from "./WatchButton";
+import { Movie } from "../Types/index.ts";
+import WatchButton from "./WatchButton.tsx";
 import { MdOutlineAccessTimeFilled } from "react-icons/md";
 
 type CarouselActionsProps = {

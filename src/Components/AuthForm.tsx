@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { LoginData, SignUpData } from "../Types";
+import { LoginData, SignUpData } from "../Types/index.ts";
 type AuthFormProps<T> = {
     isLogin: boolean;
     onSubmit: (data: T) => Promise<void>;

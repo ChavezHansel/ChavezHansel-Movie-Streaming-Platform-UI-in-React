@@ -1,5 +1,5 @@
-import SearchBar from "./SearchBar";
-import NavLinks from "./NavLinks";
+import SearchBar from "./SearchBar.tsx";
+import NavLinks from "./NavLinks.tsx";
 import { navLinks } from "../data/data.ts";
 import AuthLinks from "./AuthLinks.tsx";
 
