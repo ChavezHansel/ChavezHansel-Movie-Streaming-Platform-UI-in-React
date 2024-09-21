@@ -1,5 +1,5 @@
-import useMovies from "../hooks/useMovies.tsx";
-import { Movie } from "../types/index.ts";
+import useMovies from "../../hooks/useMovies.tsx";
+import { Movie } from "../../types/index.ts";
 import CarouselActions from "./CarouselActions.tsx";
 import CarouselDetails from "./CarouselDetails.tsx";
 
@@ -15,7 +15,7 @@ const CarouselItem = ({ movie }: CarouselItemProps) => {
     });
 
     return (
-        <div className="max-w-[75rem] px-4 md:px-6 md:mt-40 mx-auto text-2xl h-full flex flex-col items-center justify-center w-full text-white">
+        <div className="max-w-[75rem] px-4 md:px-0 md:mt-40 mx-auto text-2xl h-full flex flex-col items-center justify-center w-full text-white">
             <CarouselActions movie={movie} />
             <CarouselDetails movie={movie} movieGenres={movieGenres} />
         </div>

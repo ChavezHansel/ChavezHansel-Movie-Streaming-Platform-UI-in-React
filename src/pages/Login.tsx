@@ -9,12 +9,16 @@ const Login = () => {
         const { email, password } = data;
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!email || !emailRegex.test(email)) {
-            console.error("El correo electrónico no es válido.");
+            toast.error("El correo electrónico no es válido.", {
+                autoClose: 1500,
+                theme: "dark",
+            });
             return;
         }
         if (!password || password.length < 6) {
             toast.error("La contraseña debe tener al menos 6 caracteres.", {
                 autoClose: 1500,
+                theme: "dark",
             });
             return;
         }

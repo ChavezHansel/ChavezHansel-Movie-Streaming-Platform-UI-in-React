@@ -18,9 +18,23 @@ export type Movie= {
     release_date:string;
     vote_average:string;
   }
-  export type Genre = {
+export type Genre = {
     id:number;
     name:string;
-  }
+}
+export type Serie = {
+    id: number;
+    name: string;
+    first_air_date: string;
+    backdrop_path: string;
+    poster_path:string
+    last_episode_to_air:{
+        season_number:number;
+        episode_number:number;
+    };
+    last_air_date:number;
+    updated_at: string; 
+};
+  
 export type RegisterData = Omit<SignUpData, 'confirmPassword'>;
 export type LoginData = Omit<RegisterData, 'name'>;

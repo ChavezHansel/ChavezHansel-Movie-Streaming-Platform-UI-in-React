@@ -24,7 +24,9 @@ const MoviesContext = createContext<MoviesContextType>(defaultContextValue);
 const MoviesProvider = ({ children }: MoviesProviderProps) => {
     const [movies, setMovies] = useState<Movie[]>([]);
     const [genres, setGenres] = useState<Genre[]>([]);
+   
     useEffect(() => {
+    
         const fetchMovieDetails = async (movieId: number) => {
             try {
                 const response = await clienteAxios.get(
@@ -71,12 +73,15 @@ const MoviesProvider = ({ children }: MoviesProviderProps) => {
                 console.error("Error fetching trending movies:", error);
             }
         };
+ 
         fetchGenres();
         fetchTrendingMovies();
     }, []);
 
     return (
-        <MoviesContext.Provider value={{ movies, genres }}>
+        <MoviesContext.Provider
+            value={{ movies, genres }}
+        >
             {children}
         </MoviesContext.Provider>
     );

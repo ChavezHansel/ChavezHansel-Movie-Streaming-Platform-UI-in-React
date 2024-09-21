@@ -17,6 +17,7 @@ import Signup from "./pages/SignUp";
 import AuthLayout from "./layout/AuthLayout";
 import Animation from "./pages/Animation";
 import Login from "./pages/Login";
+import { SeriesProvider } from "./context/SeriesContext";
 
 function App() {
     const router = createBrowserRouter(
@@ -26,7 +27,9 @@ function App() {
                 element={
                     <AuthProvider>
                         <MoviesProvider>
-                            <Outlet />
+                            <SeriesProvider>
+                                <Outlet />
+                            </SeriesProvider>
                         </MoviesProvider>
                     </AuthProvider>
                 }

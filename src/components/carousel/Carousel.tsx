@@ -5,7 +5,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import { Autoplay, Pagination } from "swiper/modules";
-import useMovies from "../hooks/useMovies.tsx";
+import useMovies from "../../hooks/useMovies.tsx";
 import CarouselItem from "./CarouselItem.tsx";
 const Carousel = () => {
     const { movies } = useMovies();
@@ -17,7 +17,7 @@ const Carousel = () => {
                 index +
                 " " +
                 className +
-                ' bg-red-700 text-3xl w-3 h-3 sm:w-5 sm:h-5"></span>'
+                ' bg-red-full text-3xl w-3 h-3 sm:w-5 sm:h-5"></span>'
             );
         },
     };

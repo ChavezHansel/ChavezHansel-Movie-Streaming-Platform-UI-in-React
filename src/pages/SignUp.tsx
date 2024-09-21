@@ -11,6 +11,7 @@ const Signup = () => {
         if (!name || name.trim().length < 3) {
             toast.error("El nombre debe tener al menos 3 caracteres.", {
                 autoClose: 1500,
+                theme: "dark",
             });
             return;
         }
@@ -18,18 +19,21 @@ const Signup = () => {
         if (!email || !emailRegex.test(email)) {
             toast.error("El correo electrónico no es válido.", {
                 autoClose: 1500,
+                theme: "dark",
             });
             return;
         }
         if (!password || password.length < 6) {
             toast.error("La contraseña debe tener al menos 6 caracteres.", {
                 autoClose: 1500,
+                theme: "dark",
             });
             return;
         }
         if (password !== confirmPassword) {
             toast.error("La contraseñas no coinciden.", {
                 autoClose: 1500,
+                theme: "dark",
             });
             return;
         }

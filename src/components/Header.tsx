@@ -1,4 +1,4 @@
-import NavBar from "./NavBar.tsx";
+import NavBar from "./nav/NavBar.tsx";
 
 const Header = () => {
     return (
