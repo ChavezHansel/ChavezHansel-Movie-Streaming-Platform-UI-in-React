@@ -6,7 +6,9 @@ type SeriesProviderProps = {
     children: ReactNode;
 };
 type SeriesContextType = {
-    recentlyUpdatedSeries: Serie[];
+    recentlyUpdated: Serie[];
+    newRelease: Serie[];
+    recommended: Serie[];
     displayedRecentlyUpdated: Serie[];
     // setSession: React.Dispatch<React.SetStateAction<string>>;
     // // loading: boolean;
@@ -15,17 +17,59 @@ type SeriesContextType = {
     // login: (data: LoginData) => Promise<void>;
 };
 const defaultContextValue: SeriesContextType = {
-    recentlyUpdatedSeries: [],
+    recentlyUpdated: [],
     displayedRecentlyUpdated: [],
+    newRelease: [],
+    recommended: [],
 };
 const SeriesContext = createContext<SeriesContextType>(defaultContextValue);
 
 const SeriesProvider = ({ children }: SeriesProviderProps) => {
-    const [recentlyUpdatedSeries, setRecentlyUpdatedSeries] = useState<Serie[]>(
-        []
-    );
-
+    const [recentlyUpdated, setRecentlyUpdated] = useState<Serie[]>([]);
+    const [newRelease, setNewRelease] = useState<Serie[]>([]);
+    const [recommended, setRecommended] = useState<Serie[]>([]);
     useEffect(() => {
+        const fetchSeriesDetails = async (seriesId: number) => {
+            try {
+                const response = await clienteAxios.get(
+                    `/tv/${seriesId}?api_key=${import.meta.env.VITE_API_KEY}`
+                );
+                return response.data;
+            } catch (error) {
+                console.error(
+                    `Error fetching details for series ${seriesId}:`,
+                    error
+                );
+                return null;
+            }
+        };
+        const fetchNewReleaseSeries = async () => {
+            try {
+                const response = await clienteAxios.get(
+                    `/tv/on_the_air?api_key=${import.meta.env.VITE_API_KEY}`
+                );
+                const series = response.data.results.slice(0, 4); // Fetching 4 series
+                const seriesWithDetails = await Promise.all(
+                    series.map(async (seriesItem: any) => {
+                        const seriesDetails = await fetchSeriesDetails(
+                            seriesItem.id
+                        );
+
+                        if (seriesDetails) {
+                            return {
+                                ...seriesDetails,
+                                ...seriesItem,
+                            };
+                        }
+                        return seriesItem;
+                    })
+                );
+
+                setNewRelease(seriesWithDetails);
+            } catch (error) {
+                console.error("Error fetching new release series:", error);
+            }
+        };
         const fetchRecentlyUpdatedSeries = async () => {
             try {
                 const changesResponse = await clienteAxios.get(
@@ -47,17 +91,23 @@ const SeriesProvider = ({ children }: SeriesProviderProps) => {
                 const filteredSeries = seriesDetails.filter(
                     (series) => !series.adult
                 );
-                setRecentlyUpdatedSeries(filteredSeries);
+                setRecentlyUpdated(filteredSeries);
             } catch (error) {
                 console.error("Error fetching recently updated series:", error);
             }
         };
+        fetchNewReleaseSeries();
         fetchRecentlyUpdatedSeries();
     }, []);
-    const displayedRecentlyUpdated: Serie[] = recentlyUpdatedSeries.slice(21, 25);
+    const displayedRecentlyUpdated: Serie[] = recentlyUpdated.slice(21, 25);
     return (
         <SeriesContext.Provider
-            value={{ recentlyUpdatedSeries, displayedRecentlyUpdated }}
+            value={{
+                recentlyUpdated,
+                newRelease,
+                recommended,
+                displayedRecentlyUpdated,
+            }}
         >
             {children}
         </SeriesContext.Provider>

@@ -5,7 +5,6 @@ type SeriesProps = {
 };
 
 const SerieCard = ({ serie }: SeriesProps) => {
-    console.log(serie)
     return (
         <div className="gap-4 text-white rounded-md flex min-w-[14rem] max-w-[15rem]">
             <div className="min-w-16 ">

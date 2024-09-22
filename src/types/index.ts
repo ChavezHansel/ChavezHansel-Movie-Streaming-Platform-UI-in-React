@@ -13,11 +13,25 @@ export type Movie= {
     title: string;
     poster_path: string;
     overview: string;
+    backdrop_path:string;
     genre_ids:number[];
+    formats:string[]
     runtime:string;
     release_date:string;
     vote_average:string;
-  }
+}
+  export type Animation= {
+    id: number;
+    title: string;
+    poster_path: string;
+    overview: string;
+    backdrop_path:string;
+    genre_ids:number[];
+    formats:string[]
+    runtime:string;
+    release_date:string;
+    vote_average:string;
+}
 export type Genre = {
     id:number;
     name:string;

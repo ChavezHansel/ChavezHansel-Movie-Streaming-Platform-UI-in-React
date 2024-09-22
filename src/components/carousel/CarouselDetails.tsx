@@ -1,9 +1,9 @@
 import { LiaCalendar } from "react-icons/lia";
-import { RxTimer } from "react-icons/rx";
-import { IoMdStar } from "react-icons/io";
-import { formatVoteAverage } from "../../util/index.ts";
+
 import GenreTag from "../GenreTag.tsx";
 import { Movie } from "../../types/index.ts";
+import VoteAverage from "../common/VoteAverage.tsx";
+import Runtime from "../common/Runtime.tsx";
 
 type CarouselDetailsProps = {
     movie: Movie;
@@ -18,20 +18,14 @@ const CarouselDetails = ({ movie, movieGenres }: CarouselDetailsProps) => {
             </h2>
             <div className="flex gap-2 flex-wrap mt-4">
                 {movieGenres.map((genre: string) => (
-                    <GenreTag name={genre} key={genre} white={false} />
+                    <GenreTag name={genre} key={genre} white={true} />
                 ))}
                 <p className="text-base font-semibold ml-2 flex gap-1 items-center">
                     <LiaCalendar className="text-xl" />
                     {movie.release_date.split("-")[0]}
                 </p>
-                <p className="text-base font-semibold ml-2 flex gap-1 items-center">
-                    <RxTimer className="text-xl" />
-                    {movie.runtime}
-                </p>
-                <p className="text-base font-semibold ml-2 flex gap-1 items-center">
-                    <IoMdStar className="text-xl" />
-                    {formatVoteAverage(Number(movie.vote_average))}
-                </p>
+                <Runtime value={movie.runtime} />
+                <VoteAverage value={movie.vote_average} />
             </div>
             <p className="mt-7 text-sm md:text-lg font-medium">
                 {movie.overview}
