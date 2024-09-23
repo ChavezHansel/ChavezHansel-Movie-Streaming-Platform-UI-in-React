@@ -1,5 +1,5 @@
 import { useState, createContext, ReactNode, useEffect } from "react";
-import { Animation } from "../types/index.ts";
+import { Animation, Movie } from "../types/index.ts";
 import clienteAxios from "../config/clienteAxios.ts";
 import { formatRuntime } from "../util/index.ts";
 type AnimationProviderProps = {
@@ -7,19 +7,71 @@ type AnimationProviderProps = {
 };
 type AnimationContextType = {
     recommended: Animation[];
-    fetchRecommendedAnimations: () => void;
+    fetchRecommended: () => void;
 };
 const defaultContextValue: AnimationContextType = {
     recommended: [],
-    fetchRecommendedAnimations: () => {},
+    fetchRecommended: () => {},
 };
 const AnimationContext =
     createContext<AnimationContextType>(defaultContextValue);
 
 const AnimationProvider = ({ children }: AnimationProviderProps) => {
     const [recommended, setRecommended] = useState<Animation[]>([]);
+    const fetchMovieDetails = async (movieId: number) => {
+        try {
+            const response = await clienteAxios.get(
+                `/movie/${movieId}?api_key=${import.meta.env.VITE_API_KEY}`
+            );
+            const movieData = response.data;
+            let formats: string[] = [];
+            if (movieData.backdrop_path) {
+                formats = ["CAM"];
+            }
+            if (movieData.poster_path) {
+                formats = ["HD"];
+            }
 
-    const fetchRecommendedAnimations = async () => {
+            return {
+                ...movieData,
+                formats,
+            };
+        } catch (error) {
+            console.error(
+                `Error fetching details for movie ${movieId}:`,
+                error
+            );
+            return null;
+        }
+    };
+
+    const fetchRecommended = async () => {
+        try {
+            const response = await clienteAxios.get(
+                `/discover/movie?api_key=${
+                    import.meta.env.VITE_API_KEY
+                }&with_genres=16`
+            );
+            const animatedMovies = response.data.results;
+
+            const moviesWithRuntime = await Promise.all(
+                animatedMovies.map(async (movie: Movie) => {
+                    const movieDetails = await fetchMovieDetails(movie.id);
+                    if (movieDetails) {
+                        const formattedRuntime = formatRuntime(
+                            movieDetails.runtime
+                        );
+                        return { ...movieDetails, runtime: formattedRuntime };
+                    }
+                    return movie;
+                })
+            );
+            setRecommended(moviesWithRuntime);
+        } catch (error) {
+            console.error("Error fetching animated movies:", error);
+        }
+    };
+    /* const fetchRecommended = async () => {
         try {
             const response = await clienteAxios.get(
                 `/movie/957452/recommendations?api_key=${
@@ -66,15 +118,15 @@ const AnimationProvider = ({ children }: AnimationProviderProps) => {
         } catch (error) {
             console.error("Error fetching recommended animations:", error);
         }
-    };
+    };*/
     useEffect(() => {
-        fetchRecommendedAnimations();
+        fetchRecommended();
     }, []);
     return (
         <AnimationContext.Provider
             value={{
                 recommended,
-                fetchRecommendedAnimations,
+                fetchRecommended,
             }}
         >
             {children}

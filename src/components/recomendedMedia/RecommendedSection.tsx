@@ -19,16 +19,16 @@ const RecommendedSection = () => {
     useEffect(() => {
         switch (activeCategory) {
             case "movies":
-                setContent(movies);
+                setContent(movies.slice(0, 8));
                 break;
             case "series":
-                setContent(series);
+                setContent(series.slice(0, 8));
                 break;
             case "animation":
-                setContent(animation);
+                setContent(animation.slice(0, 8));
                 break;
             default:
-                setContent(movies);
+                setContent(movies.slice(0, 8));
         }
     }, [activeCategory, movies, series, animation]);
     return (
@@ -81,7 +81,7 @@ const RecommendedSection = () => {
                     <MediaCard
                         key={item.id}
                         id={item.id}
-                        title={item.title || item.name} // name for series
+                        title={item.title || item.name}
                         posterPath={item.poster_path}
                         formats={item.formats}
                         runtime={item.runtime}

@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import FormatTag from "./FormatTag";
 import Runtime from "./common/Runtime";
@@ -37,8 +36,8 @@ const MediaCard = ({
                 <h3 className="text-base truncate lg:text-lg text-white font-medium">
                     {title}
                 </h3>
-                <div className="flex gap-2 items-start min-w-[115px] justify-end">
-                    <FormatTag name={formats[0]} />
+                <div className="flex gap-2 items-start min-w-[125px] justify-end">
+                    <FormatTag name={formats[0] || "Hola"} />
                     <div className="border-red-full font-medium p-1 border rounded-md  flex items-center">
                         {runtime ? (
                             <Runtime value={runtime} />
